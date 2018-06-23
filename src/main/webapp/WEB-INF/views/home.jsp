@@ -9,6 +9,7 @@
 </head>
 <body>
 <h1>Welcome to Home Page!</h1>
-<a href="<c:url value="/logout" />">Logout</a>
+<%-- <a href="<c:url value="/logout" />">Logout</a> --%> <!--  to też działa -->
+<a href="/Warsztat6/logout">Logout</a>
 </body>
 </html>

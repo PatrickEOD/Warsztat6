@@ -11,7 +11,15 @@
 </head>
 <body>
 <div>
+	<c:if test="${param.loggedout != null}">
+		<p>Successfully logged out</p>
+	</c:if>
+</div>
+<div>
 	<h2>Login!</h2>
+	<c:if test="${param.error != null}">
+		<p>Invalid credentials!!!</p>
+	</c:if>
 	<form method="post" action="/Warsztat6/login">
 		<input type="text" name="username" placeholder="Enter username">
 		<input type="password" name="password" placeholder="Enter password">

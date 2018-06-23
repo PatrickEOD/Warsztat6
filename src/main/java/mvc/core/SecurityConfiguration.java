@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
 @Configuration
@@ -28,10 +29,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.authenticated() //musi byc autentykowane
 			.and()
 			.formLogin()//formatowanie loginu
+				.defaultSuccessUrl("/home") // przekierowanie na stronę domowa po wylogowaniu i zalogowaniu
 				.loginPage("/login")//strona logowania
 				.loginProcessingUrl("/login")//przekierowanie na stronę
 				.usernameParameter("username")
 				.passwordParameter("password")
+			.and()
+			.logout()
+				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+				.invalidateHttpSession(true)
+				.logoutSuccessUrl("/login?loggedout")
 			.and()
 			.httpBasic();//reszta rzeczy domyślna
 	}
